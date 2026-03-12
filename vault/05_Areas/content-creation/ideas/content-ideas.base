@@ -1,0 +1,79 @@
+filters:
+  and:
+    - file.inFolder("05_Areas/content-creation/ideas")
+    - type == "content-idea"
+properties:
+  format:
+    displayName: Format
+  status:
+    displayName: Status
+  source:
+    displayName: Source
+  priority:
+    displayName: Priority
+  created:
+    displayName: Created
+views:
+  - type: table
+    name: Recently Created
+    order:
+      - file.name
+      - format
+      - status
+      - priority
+      - created
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: All Ideas
+    order:
+      - file.name
+      - file.folder
+      - format
+      - status
+      - source
+      - priority
+      - created
+  - type: table
+    name: Ready to Draft
+    filters:
+      and:
+        - status == "idea"
+        - priority <= 2
+    order:
+      - file.name
+      - format
+      - source
+      - priority
+  - type: table
+    name: By Format
+    groupBy:
+      property: format
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - source
+      - priority
+      - created
+  - type: table
+    name: By Priority
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - format
+      - status
+      - source
+  - type: table
+    name: By Status
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - format
+      - source
+      - priority

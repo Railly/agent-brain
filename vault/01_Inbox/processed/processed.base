@@ -1,0 +1,48 @@
+filters:
+  and:
+    - file.inFolder("01_Inbox/processed")
+    - file.ext == "md"
+formulas:
+  source_domain: if(source, source.replace(/https?:\/\/([^\/]+).*/, "$1"), "")
+  processed_date: file.folder.replace("01_Inbox/processed/", "")
+properties:
+  title:
+    displayName: Title
+  author:
+    displayName: Author
+  source:
+    displayName: Source
+  created:
+    displayName: Clipped
+  formula.source_domain:
+    displayName: Domain
+  formula.processed_date:
+    displayName: Processed On
+views:
+  - type: table
+    name: All Processed
+    order:
+      - file.name
+      - formula.source_domain
+      - author
+      - created
+      - formula.processed_date
+  - type: table
+    name: By Date
+    groupBy:
+      property: formula.processed_date
+      direction: DESC
+    order:
+      - file.name
+      - formula.source_domain
+      - author
+  - type: table
+    name: By Source
+    groupBy:
+      property: formula.source_domain
+      direction: ASC
+    order:
+      - file.name
+      - author
+      - created
+      - formula.processed_date

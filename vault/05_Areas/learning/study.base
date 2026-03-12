@@ -1,0 +1,43 @@
+filters:
+  and:
+    - file.inFolder("05_Areas/learning/daily")
+    - file.hasTag("study")
+formulas:
+  week: if(date, date(date).format("gggg") + "-W" + date(date).format("WW"), "---")
+  day: if(date, date(date).format("ddd") + " --- " + date(date).format("DD/MM"), "---")
+  total_fmt: if(total_minutes >= 60, "A " + total_minutes.toString() + "m", if(total_minutes >= 30, "B " + total_minutes.toString() + "m", if(total_minutes >= 15, "C " + total_minutes.toString() + "m", if(total_minutes > 0, "D " + total_minutes.toString() + "m", "---"))))
+  recall_fmt: if(recall_minutes > 0, recall_minutes.toString() + "m", "---")
+  new_fmt: if(new_minutes > 0, new_minutes.toString() + "m", "---")
+  topics_fmt: if(topics, topics.join(", "), "---")
+  questions_fmt: if(self_generated_questions > 0, self_generated_questions.toString(), "---")
+properties:
+  formula.week:
+    displayName: Week
+  formula.day:
+    displayName: Day
+  formula.total_fmt:
+    displayName: Total
+  formula.recall_fmt:
+    displayName: Recall
+  formula.new_fmt:
+    displayName: New
+  formula.topics_fmt:
+    displayName: Topics
+  formula.questions_fmt:
+    displayName: Qs
+views:
+  - type: table
+    name: Daily Study
+    groupBy:
+      property: formula.week
+      direction: DESC
+    order:
+      - file.name
+      - formula.day
+      - formula.total_fmt
+      - formula.recall_fmt
+      - formula.new_fmt
+      - formula.topics_fmt
+      - formula.questions_fmt
+    columnSize:
+      formula.day: 144

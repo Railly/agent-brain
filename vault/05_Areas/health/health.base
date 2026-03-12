@@ -1,0 +1,51 @@
+filters:
+  and:
+    - file.inFolder("05_Areas/health/daily")
+    - file.hasTag("health")
+formulas:
+  week: if(date, date(date).format("gggg") + "-W" + date(date).format("WW"), "—")
+  day: if(date, date(date).format("ddd") + " — " + date(date).format("DD/MM"), "—")
+  sleep_fmt: if(sleep_minutes >= 450, "🟢 " + (sleep_minutes / 60).toFixed(1) + "h", if(sleep_minutes >= 360, "🟡 " + (sleep_minutes / 60).toFixed(1) + "h", if(sleep_minutes > 0, "🔴 " + (sleep_minutes / 60).toFixed(1) + "h", "—")))
+  steps_fmt: if(steps >= 8000, "🟢 " + steps.toString(), if(steps >= 4000, "🟡 " + steps.toString(), if(steps > 0, "🔴 " + steps.toString(), "—")))
+  cal_fmt: if(active_calories >= 300, "🟢 " + active_calories.toFixed(0), if(active_calories > 0, "🟡 " + active_calories.toFixed(0), "—"))
+  exercise_fmt: if(exercise_minutes >= 30, "🟢 " + exercise_minutes.toString() + "m", if(exercise_minutes > 0, "🟡 " + exercise_minutes.toString() + "m", "—"))
+  hr_fmt: if(avg_heart_rate, avg_heart_rate.toFixed(0) + " bpm", "—")
+  hrv_fmt: if(avg_hrv >= 60, "🟢 " + avg_hrv.toFixed(0) + "ms", if(avg_hrv > 0, "🟡 " + avg_hrv.toFixed(0) + "ms", "—"))
+  sleep_grade: if(sleep_minutes >= 450, "A", if(sleep_minutes >= 420, "B", if(sleep_minutes >= 360, "C", "D")))
+properties:
+  formula.week:
+    displayName: Week
+  formula.day:
+    displayName: Day
+  formula.steps_fmt:
+    displayName: Steps
+  formula.sleep_fmt:
+    displayName: Sleep
+  formula.cal_fmt:
+    displayName: Cal
+  formula.exercise_fmt:
+    displayName: Exer
+  formula.hr_fmt:
+    displayName: HR
+  formula.hrv_fmt:
+    displayName: HRV
+  formula.sleep_grade:
+    displayName: Grade
+views:
+  - type: table
+    name: Daily Health
+    groupBy:
+      property: formula.week
+      direction: DESC
+    order:
+      - file.name
+      - formula.day
+      - formula.sleep_fmt
+      - formula.sleep_grade
+      - formula.steps_fmt
+      - formula.cal_fmt
+      - formula.exercise_fmt
+      - formula.hr_fmt
+      - formula.hrv_fmt
+    columnSize:
+      formula.day: 144
