@@ -2,6 +2,8 @@
 
 Your AI already knows your stack, your repos, and your failures. Zero cold starts.
 
+> **[Read the full blog post](https://www.railly.dev/blog/agentic-second-brain)** for architecture, diagrams, and the thinking behind the system.
+
 An open-source personal OS built on Obsidian + Claude Code + Codex. Every coding session starts from your vault, every terminal inherits your preferences, and the AI gets smarter every day because it remembers everything.
 
 ## Why This Exists
