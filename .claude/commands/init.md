@@ -59,9 +59,15 @@ cp .claude/commands/*.md "{path}/.claude/commands/"
 
 Do NOT copy `init.md` itself (it's only needed for setup).
 
-## WAVE 4: Generate CLAUDE.md
+Also copy the Codex skills:
 
-Create `{path}/CLAUDE.md` using the answers from WAVE 1. Follow this structure:
+```bash
+cp -r .agents/ "{path}/.agents/"
+```
+
+## WAVE 4: Generate CLAUDE.md + AGENTS.md
+
+Create `{path}/CLAUDE.md` using the answers from WAVE 1. Then copy it to `{path}/AGENTS.md` so Codex and other agents read the same context. Follow this structure:
 
 ```markdown
 # {Name}'s Brain
@@ -122,7 +128,11 @@ Create `{path}/CLAUDE.md` using the answers from WAVE 1. Follow this structure:
 
 Adapt the tone and details based on their answers. If they mentioned specific tools, preferences, or constraints, include those.
 
-Also create `{path}/AGENTS.md` as a copy of `CLAUDE.md` so Codex and other agents read the same context.
+After writing CLAUDE.md, copy it to AGENTS.md:
+
+```bash
+cp "{path}/CLAUDE.md" "{path}/AGENTS.md"
+```
 
 ## WAVE 5: Scan for repos
 
