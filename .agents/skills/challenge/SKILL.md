@@ -1,4 +1,9 @@
 ---
+name: challenge
+description: Argue against your own thinking on a topic using evidence from your vault
+---
+
+---
 description: Argue against your own thinking on a topic using evidence from your vault
 ---
 

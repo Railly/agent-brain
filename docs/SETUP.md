@@ -2,15 +2,15 @@
 
 ## Prerequisites
 
-1. **Obsidian** (free) — [obsidian.md](https://obsidian.md)
-2. **Claude Code** ($20/mo) — [claude.ai/claude-code](https://claude.ai/claude-code)
-3. **Git** — for version control of your vault
+1. **Obsidian** (free), [obsidian.md](https://obsidian.md)
+2. **Claude Code** ($20/mo), [claude.ai/claude-code](https://claude.ai/claude-code)
+3. **Git**, for version control of your vault
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/Railly/second-brain.git
-cd second-brain
+git clone https://github.com/Railly/agent-brain.git
+cd agent-brain
 ```
 
 ### Option A: Interactive Setup (Recommended)
@@ -57,9 +57,9 @@ Now anything you clip lands in your inbox, ready for `/inbox` to process.
 
 ## Recommended Obsidian Plugins
 
-- **Dataview** — Query your notes programmatically
-- **Calendar** — Visual daily note navigation
-- **Graph View** (built-in) — See your knowledge graph
+- **Dataview**, Query your notes programmatically
+- **Calendar**, Visual daily note navigation
+- **Graph View** (built-in), See your knowledge graph
 
 ## Verify Installation
 
@@ -72,4 +72,4 @@ Now anything you clip lands in your inbox, ready for `/inbox` to process.
 
 - Read [COMMANDS.md](COMMANDS.md) for the full command reference
 - Read [PHILOSOPHY.md](PHILOSOPHY.md) to understand the system
-- Start with `/log` and `/inbox` — they're the gateway commands
+- Start with `/log` and `/inbox`, they're the gateway commands

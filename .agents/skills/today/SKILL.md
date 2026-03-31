@@ -1,4 +1,9 @@
 ---
+name: today
+description: Log daily accomplishments, reflect on the day, and prep tomorrow
+---
+
+---
 description: Log daily accomplishments, reflect on the day, and prep tomorrow
 ---
 

@@ -2,7 +2,7 @@
 
 ## Why Most Knowledge Systems Fail
 
-Note-taking apps are graveyards. Notes go in, nothing comes out. You clip articles, highlight books, jot ideas — then never look at them again.
+Note-taking apps are graveyards. Notes go in, nothing comes out. You clip articles, highlight books, jot ideas, then never look at them again.
 
 The problem isn't the tool. It's that knowledge systems require **discipline** that humans don't have consistently. You need to:
 - Process raw captures into useful notes
@@ -29,7 +29,7 @@ You still do the thinking. The agent handles the maintenance.
 ## Core Principles
 
 ### 1. Atomic Notes (Zettelkasten)
-Each note captures ONE idea. Not a page of notes from a meeting — one specific insight. This makes notes composable and connectable.
+Each note captures ONE idea. Not a page of notes from a meeting, one specific insight. This makes notes composable and connectable.
 
 ### 2. Bidirectional Linking
 Every connection goes both ways. If Note A references Note B, Note B should know about Note A. The `/relink` command enforces this.

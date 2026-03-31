@@ -1,25 +1,28 @@
-# second-brain
+# agent-brain
 
-An agent-powered knowledge system built on Obsidian + Claude Code.
+Your AI already knows your stack, your repos, and your failures. Zero cold starts.
 
-Your AI maintains your knowledge system: processes web clips into atomic notes, extracts buried ideas from daily logs, finds missing connections, warns you when you're repeating old mistakes, and argues against your own thinking when you ask it to.
+An open-source personal OS built on Obsidian + Claude Code + Codex. Every coding session starts from your vault, every terminal inherits your preferences, and the AI gets smarter every day because it remembers everything.
 
-## What This Is
+## Why This Exists
 
-This is not a dotfiles repo. It's a **knowledge operating system** — a vault structure, 22 commands, and a philosophy that work together as a system.
+Every AI coding tool starts from zero. You open Claude Code, Cursor, Copilot, and the first thing you do is explain your stack, your repos, your preferences. Every session.
 
+This system eliminates that. Your CLAUDE.md loads on startup with your identity, stack, goals, and anti-patterns. Your `07_System/context-files/` folder contains deep context for each project, loaded on demand. The result: 10+ parallel terminal sessions, each starting from the same vault, each able to cross-reference any project.
+
+## Quick Start
+
+```bash
+git clone https://github.com/Railly/agent-brain.git
+cd agent-brain && claude
+/init
 ```
-Web Clipper -> 01_Inbox/ -> /inbox -> 03_Garden/ -> /graduate -> 06_Content/
-                                          |
-                                       /relink (finds connections)
-                                       /challenge (argues against you)
-                                       /pulse (checks goal alignment)
-```
+
+`/init` asks your name, your stack, your goals, and one recurring failure. Then it creates your vault, generates a personalized CLAUDE.md, copies all commands, scans your machine for repos, and creates your first daily log. Two minutes, zero manual setup.
 
 ## What's Inside
 
-### Vault Template
-Pre-configured Obsidian vault with 7 folders following the Zettelkasten + PARA hybrid:
+### Vault Structure
 
 | Folder | Purpose |
 |--------|---------|
@@ -27,133 +30,104 @@ Pre-configured Obsidian vault with 7 folders following the Zettelkasten + PARA h
 | `02_Journal/` | Daily logs, weekly plans, reflections |
 | `03_Garden/` | Evergreen atomic notes (concepts, people, meetings) |
 | `04_Projects/` | Active project work |
-| `05_Areas/` | Ongoing contexts (learning, content creation) |
+| `05_Areas/` | Ongoing contexts (work, content, health) |
 | `06_Content/` | Ready-to-publish drafts |
-| `07_System/` | System configuration and context files |
+| `07_System/` | Context files and configuration |
 
-### 22 Commands
+### 15 Commands
 
-**Daily Workflow**: `/today`, `/log`, `/ship`, `/close-day`, `/morning`, `/week`
+**Daily**: `/morning`, `/today`, `/log`, `/ship`, `/week`
 
-**Knowledge Management**: `/inbox`, `/graduate`, `/relink`, `/vault-search`, `/meeting`
+**Knowledge**: `/inbox`, `/relink`, `/vault-search`, `/meeting`, `/research`
 
-**Thinking & Analysis**: `/challenge`, `/pulse`
+**Thinking**: `/challenge`, `/pulse`
 
-**Content Creation**: `/draft`, `/de-ai`
+**Content**: `/draft`, `/de-ai`
 
-**Learning System**: `/prime`, `/learn`, `/recall`, `/study`
+**Setup**: `/init`
 
-**Advanced**: `/research`, `/overnight`, `/status`
+### System Files
 
-### CLAUDE.md Template
-Your AI's personality, goals, anti-patterns, and communication style — all in one file that Claude Code reads on every interaction.
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | Identity, stack, goals, anti-patterns (read by Claude Code) |
+| `AGENTS.md` | Same content (read by Codex and other agents) |
+| `PURPOSE.md` | Architecture and design decisions, for any LLM |
+| `HOME.md` | Vault dashboard, stats, quick start |
+| `HUMAN.md` | How-to guide for the human |
 
-## What Makes This Different
+### Works With Claude Code AND Codex
+
+Commands live in both formats:
+
+| Tool | Location | Invocation |
+|------|----------|------------|
+| Claude Code | `.claude/commands/*.md` | `/command-name` |
+| Codex CLI | `.agents/skills/*/SKILL.md` | `$skill-name` |
+
+Same instructions, native format for each tool. No wrappers.
+
+## Key Features
+
+### Programming From Your Vault
+
+Every session starts here, not in the project repo. CLAUDE.md knows your stack preferences (Bun not npm, Biome not ESLint), where every repo lives, and what you've been working on. Context files load on demand:
+
+```
+@07_System/context-files/clerk-context.md
+@07_System/context-files/crafter-station-context.md
+@07_System/context-files/repos-map.md
+```
+
+10+ terminal sessions in parallel, all rooted in the vault, each able to reach into any project.
+
+### Auto-Logging With /ship
+
+Every `/ship` commits your code, pushes, and auto-logs to the daily journal. You never manually write "today I worked on auth". Over months, those data points become a complete record of what you actually do vs what you think you do.
 
 ### Anti-Pattern Detection
-Your `anti-patterns.md` file captures your recurring failures honestly. `/pulse` reads it and warns you when you're repeating them.
+
+Formalize your recurring failures in CLAUDE.md. `/pulse` checks them against actual data weekly:
 
 ```
-PATTERN ALERT: No exercise logs in 14 days (recurring x2 in reviews)
+PATTERN ALERT: No exercise logs in 10 days (recurring x2)
+BLIND SPOT: "Math for ML", no engagement in 14 days
 ```
 
-### The /challenge Command
-Built-in anti-sycophancy. Uses 6 analytical lenses to argue against your beliefs using YOUR vault data:
+### /challenge (Anti-Sycophancy)
 
-1. **Opportunity Cost** — What are you NOT doing?
-2. **Survivorship Bias** — Are you cherry-picking evidence?
-3. **Sunk Cost** — Would you start this today if you hadn't already invested?
-4. **Contrarian Evidence** — What in your vault contradicts this?
-5. **Second-Order Effects** — What if you're right but the consequences are bad?
-6. **Anti-Pattern Match** — Does this match a historical failure?
+Argues against your own beliefs using vault evidence across six lenses: opportunity cost, survivorship bias, sunk cost, contrarian evidence, second-order effects, and anti-pattern matches.
 
-### Bidirectional Knowledge Flow
-Not just note-taking — note-graduating and note-publishing:
+### Pareto Analysis (/pulse)
 
-```
-/inbox  ->  Clips become atomic notes with connections
-/graduate  ->  Buried ideas in dailies become permanent notes
-/relink  ->  Missing connections get found and created
-/draft  ->  Knowledge becomes publishable content
-```
-
-### Pareto Goal Alignment (/pulse)
-Weekly analysis that tells you if your actions match your stated goals:
+Weekly analysis that ranks your interests by engagement weight, flags drift, and surfaces blind spots:
 
 ```
 VITAL 20%
-1. Rust         ████████████ 45%
-2. AI Agents    ██████░░░░░░ 25%   <- DRIFT (not in goals)
-3. Auth         ████░░░░░░░░ 15%
-
-BLIND SPOTS
-- "Math for ML" - No engagement in 14 days
-- "Content creation" - 5 ideas queued, 0 published
-```
-
-### Learning System
-Spaced retrieval and knowledge formulation built into your notes:
-
-```
-/prime -> Pre-lesson scaffolding (3 min)
-/learn -> Create note with review questions
-/recall -> Morning quiz from your own notes
-/study -> Track consistency
-```
-
-## Quick Start
-
-### Prerequisites
-- [Obsidian](https://obsidian.md) (free)
-- [Claude Code](https://claude.ai/claude-code) ($20/mo)
-
-### Setup
-
-```bash
-git clone https://github.com/Railly/second-brain.git
-cd second-brain
-
-# Copy vault to your preferred location
-cp -r vault/ ~/my-brain/
-
-# Copy commands
-cp -r .claude/ ~/my-brain/.claude/
-
-# Copy and customize CLAUDE.md
-cp CLAUDE.md ~/my-brain/CLAUDE.md
-# Edit CLAUDE.md with your name, goals, anti-patterns
-
-# Open in Obsidian
-# File -> Open Vault -> ~/my-brain/
-```
-
-### First Commands to Try
-
-```bash
-cd ~/my-brain && claude
-
-/log "Setting up my second brain"    # Quick entry
-/inbox                                # Process any clips
-/challenge "I should use AI for everything"  # Test the anti-sycophancy engine
+1. Auth/Clerk    ████████████ 45%
+2. AI Agents     ██████░░░░░░ 25%
+3. Community     ████░░░░░░░░ 15%
 ```
 
 ## Documentation
 
-- [Setup Guide](docs/SETUP.md) — Detailed installation and configuration
-- [Command Reference](docs/COMMANDS.md) — All 22 commands with examples
-- [Philosophy](docs/PHILOSOPHY.md) — Why this system works
-- [Customization](docs/CUSTOMIZATION.md) — Add your own commands
-- [Advanced](docs/ADVANCED.md) — Always-on assistant, cron, notifications
+| Doc | Content |
+|-----|---------|
+| [Setup Guide](docs/SETUP.md) | Detailed installation and configuration |
+| [Command Reference](docs/COMMANDS.md) | All 15 commands with examples |
+| [Philosophy](docs/PHILOSOPHY.md) | Why this system works |
+| [Customization](docs/CUSTOMIZATION.md) | Add your own commands |
+| [Advanced](docs/ADVANCED.md) | Always-on assistant, cron, multi-agent |
 
 ## The System, Not the Config
 
-Other repos share Claude Code configs. This shares a **system** — commands that reference each other, a vault where knowledge flows from capture to publication, and an AI that knows your weaknesses better than you do.
+Other repos share AI configs. This shares a system where commands reference each other, knowledge flows from capture to publication, and the AI knows your weaknesses better than you do.
 
-`/today` feeds `/pulse`. `/inbox` feeds `/graduate`. `/graduate` feeds `/draft`. The flow is the product.
+`/today` feeds `/pulse`. `/inbox` feeds the garden. `/relink` connects the dots. `/ship` logs everything. The flow is the product.
 
 ## Built by
 
-[Railly Hugo](https://railly.dev) — AI Software Engineer, founder of [Crafter Station](https://crafterstation.com). I've used this system daily for 4+ months across 20+ projects.
+[Railly Hugo](https://railly.dev), AI Software Engineer at [Clerk](https://clerk.com), founder of [Crafter Station](https://crafterstation.com). Used daily for 4+ months across 20+ repos.
 
 ## License
 

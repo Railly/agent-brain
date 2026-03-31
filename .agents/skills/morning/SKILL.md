@@ -1,4 +1,9 @@
 ---
+name: morning
+description: Morning briefing - curated task list from multiple sources
+---
+
+---
 description: Morning briefing - curated task list from multiple sources
 ---
 

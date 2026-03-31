@@ -42,10 +42,10 @@ Rules that check your state and nudge you:
 ## Soul System
 
 Give your assistant a persistent personality:
-- `IDENTITY.md` — Name, role, capabilities
-- `PREFERENCES.md` — Communication style
-- `USER.md` — Your context, goals, relationships
-- `RELATIONSHIPS.md` — People in your life
+- `IDENTITY.md`, Name, role, capabilities
+- `PREFERENCES.md`, Communication style
+- `USER.md`, Your context, goals, relationships
+- `RELATIONSHIPS.md`, People in your life
 
 The assistant loads these on every message, creating consistent personality across conversations.
 

@@ -5,10 +5,13 @@ All commands are Claude Code slash commands. Run them from your vault directory.
 ## Daily Workflow
 
 ### /today
-Generate end-of-day log from git commits + manual entries.
+Daily log + end-of-day reflection in one command.
 - Auto-detects commits across repos
 - Carries over unfinished tasks from yesterday
 - Generates content ideas from your work
+- Task completion audit (planned vs actual)
+- MIT progress check from weekly goals
+- Day rating (1-7)
 ```
 /today
 ```
@@ -25,13 +28,6 @@ Commit, push, and log to daily file.
 ```
 /ship              # commit + push
 /ship pr           # commit + push + create PR
-```
-
-### /close-day
-End-of-day reflection: task audit, energy map, learnings, tomorrow prep.
-```
-/close-day         # full review
-/close-day --quick # just learnings + carry-over
 ```
 
 ### /morning
