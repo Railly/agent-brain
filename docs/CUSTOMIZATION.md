@@ -2,7 +2,7 @@
 
 ## Adding Your Own Commands
 
-Commands are markdown files in `.claude/commands/`. Claude Code reads them as instructions.
+Commands are markdown files in `.claude/commands/`. Your AI agent reads them as instructions.
 
 ### Command Structure
 
@@ -11,7 +11,7 @@ Commands are markdown files in `.claude/commands/`. Claude Code reads them as in
 description: Short description shown in command list
 ---
 
-{Instructions for Claude Code}
+{Instructions for your AI agent}
 ```
 
 ### Tips

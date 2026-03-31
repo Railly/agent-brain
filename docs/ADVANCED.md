@@ -4,9 +4,9 @@ This repo includes the core knowledge system. For power users who want an always
 
 ## The Gateway Pattern
 
-Instead of only using Claude Code in the terminal, you can set up a webhook server that:
+Instead of only using AI agents in the terminal, you can set up a webhook server that:
 1. Receives messages from WhatsApp/Telegram/Slack
-2. Processes them with Claude Code (`claude -p`)
+2. Processes them with your AI agent (`claude -p` or `codex`)
 3. Replies through the same channel
 
 This turns your second brain into a conversational assistant you can message anytime.

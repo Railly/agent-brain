@@ -7,7 +7,7 @@ type: system
 
 ### Morning
 ```bash
-cd ~/brain && claude    # open Claude Code in the vault
+cd ~/brain && claude    # open your AI agent in the vault
 /morning                # calendar, tasks, MITs, anti-pattern check
 ```
 
@@ -36,7 +36,7 @@ cd ~/brain && claude    # open Claude Code in the vault
 
 ## Key Concepts
 
-**Commands** live in `.claude/commands/`. Each is a markdown file with a multi-step workflow that Claude Code executes.
+**Commands** live in `.claude/commands/`. Each is a markdown file with a multi-step workflow that your AI agent executes.
 
 **Context files** live in `07_System/context-files/`. They provide deep per-project context, loaded on demand with `@` references in CLAUDE.md.
 
@@ -60,5 +60,5 @@ cd ~/brain && claude    # open Claude Code in the vault
 
 - Run `/init` to set up a new vault with personalized CLAUDE.md
 - Install Obsidian Web Clipper to feed the inbox
-- Every correction you give Claude Code gets saved to memory automatically
+- Every correction you give your AI agent gets saved to memory automatically
 - The more you use `/ship`, the more accurate `/pulse` becomes

@@ -17,7 +17,7 @@ Nobody does all of this manually, consistently, for years.
 
 What if an AI maintained your knowledge system FOR you?
 
-That's what this project is. Claude Code acts as your knowledge maintenance agent:
+That's what this project is. Your AI agent acts as your knowledge maintenance agent:
 - `/inbox` processes your web clips into atomic notes with connections
 - `/graduate` rescues buried ideas from daily logs
 - `/relink` finds missing connections between notes

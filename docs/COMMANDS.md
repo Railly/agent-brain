@@ -1,6 +1,6 @@
 # Command Reference
 
-All commands are Claude Code slash commands. Run them from your vault directory.
+All commands are slash commands (Claude Code) or skills (Codex). Run them from your vault directory.
 
 ## Daily Workflow
 

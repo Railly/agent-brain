@@ -3,7 +3,7 @@ type: home
 ---
 # My Brain
 
-> Personal OS powered by Claude Code + Obsidian
+> Personal OS powered by Obsidian + AI coding agents
 
 ## Vault Stats
 
@@ -20,7 +20,7 @@ type: home
 ## Quick Start
 
 ```bash
-claude          # open Claude Code in this vault
+claude          # open your AI agent in this vault
 /morning        # start your day
 /ship           # commit + auto-log
 /today          # end-of-day review

@@ -4,11 +4,11 @@ Your AI already knows your stack, your repos, and your failures. Zero cold start
 
 > **[Read the full blog post](https://www.railly.dev/blog/agentic-second-brain)** for architecture, diagrams, and the thinking behind the system.
 
-An open-source personal OS built on Obsidian + Claude Code + Codex. Every coding session starts from your vault, every terminal inherits your preferences, and the AI gets smarter every day because it remembers everything.
+An open-source personal OS built on Obsidian, compatible with Claude Code, Codex, and any AI agent that reads markdown. Every coding session starts from your vault, every terminal inherits your preferences, and the AI gets smarter every day because it remembers everything.
 
 ## Why This Exists
 
-Every AI coding tool starts from zero. You open Claude Code, Cursor, Copilot, and the first thing you do is explain your stack, your repos, your preferences. Every session.
+Every AI coding tool starts from zero. You open Claude Code, Codex, Cursor, and the first thing you do is explain your stack, your repos, your preferences. Every session.
 
 This system eliminates that. Your CLAUDE.md loads on startup with your identity, stack, goals, and anti-patterns. Your `07_System/context-files/` folder contains deep context for each project, loaded on demand. The result: 10+ parallel terminal sessions, each starting from the same vault, each able to cross-reference any project.
 
@@ -52,13 +52,13 @@ cd agent-brain && claude
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | Identity, stack, goals, anti-patterns (read by Claude Code) |
+| `CLAUDE.md` | Identity, stack, goals, anti-patterns (read by Claude Code and Codex) |
 | `AGENTS.md` | Same content (read by Codex and other agents) |
 | `PURPOSE.md` | Architecture and design decisions, for any LLM |
 | `HOME.md` | Vault dashboard, stats, quick start |
 | `HUMAN.md` | How-to guide for the human |
 
-### Works With Claude Code AND Codex
+### Works With Multiple AI Tools
 
 Commands live in both formats:
 
