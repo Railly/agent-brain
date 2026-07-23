@@ -1,88 +1,68 @@
-# Customization Guide
+# Customization
 
-## Adding Your Own Commands
+## Canonical workflow source
 
-Commands are markdown files in `.claude/commands/`. Your AI agent reads them as instructions.
+Edit workflows only in:
 
-### Command Structure
-
-```markdown
----
-description: Short description shown in command list
----
-
-{Instructions for your AI agent}
+```text
+.agents/skills/<name>/SKILL.md
 ```
 
-### Tips
+The Claude Code surfaces are generated adapters:
 
-1. **Be specific**: Tell Claude exactly what files to read/write and what format to use
-2. **Use waves**: Group independent operations into parallel waves for speed
-3. **Add options**: Support flags like `--dry`, `--quick` for flexibility
-4. **Show examples**: Include example input/output so Claude knows what you expect
+```text
+.claude/skills/<name>/SKILL.md
+.claude/commands/<name>.md
+```
 
-### Example: Custom /standup Command
+Do not edit adapters directly. Regenerate them from the canonical skills.
+
+## Add a workflow
+
+Create the canonical file:
+
+```text
+.agents/skills/standup/SKILL.md
+```
+
+Use this structure:
 
 ```markdown
 ---
-description: Generate standup update from yesterday and today
+name: standup
+description: Generate a concise standup from recent vault evidence
 ---
 
 Generate a standup update.
 
-1. Read yesterday's daily log: `02_Journal/daily/{YESTERDAY}.md`
-2. Read today's tasks from weekly: `02_Journal/weekly/week-{YEAR}-W{WEEK}.md`
-
-Output format:
-\```
-Yesterday: {accomplishments from daily log}
-Today: {planned tasks from weekly MITs}
-Blockers: {any carry-over items marked as blocked}
-\```
-
-Keep it under 5 lines total. No fluff.
+1. Read yesterday's daily log.
+2. Read today's weekly priorities.
+3. Report yesterday, today, and blockers in five lines or fewer.
 ```
 
-## Customizing CLAUDE.md
+Generate the adapters:
 
-The `CLAUDE.md` file is your AI's personality and context. Key sections to personalize:
-
-### Identity
-Your name, role, goals. The more specific, the better the AI's responses.
-
-### Anti-Patterns
-Be brutally honest. These are YOUR recurring failures. The more specific the signals, the better `/pulse` can detect them.
-
-### Communication Style
-Tell the AI how you want it to talk to you. Some people want Jarvis-style efficiency. Others want a collaborative tone.
-
-### Goals
-Keep these updated quarterly. `/pulse` uses them to check if your actions match your intentions.
-
-## Adding Notification Hooks
-
-Commands support an optional notification step. To add notifications:
-
-1. Create a notification script (e.g., Slack webhook, email, push notification)
-2. Add to your CLAUDE.md:
-```markdown
-## Notifications
-After completing /inbox, /pulse, or /meeting, run:
-\`\`\`bash
-./scripts/notify.sh "{summary}"
-\`\`\`
+```bash
+bun run sync
 ```
 
-## Extending the Vault Structure
+Add the workflow to `docs/COMMANDS.md` and extend `scripts/check-template.ts` when contributing it to this template. Run `bun run check` before committing.
 
-Need more areas? Add folders under `05_Areas/`:
-```
-05_Areas/
-├── content-creation/
-├── learning/
-├── health/          # Add health tracking
-├── finances/        # Add finance tracking
-└── {your-area}/     # Add whatever you need
-```
+## Personal context
 
-Then update `07_System/context-files/knowledge-system.md` to document the new structure.
+Customize `CLAUDE.md` and `AGENTS.md` with:
+
+- identity and current roles
+- stack and tool constraints
+- current goals
+- recurring failures with observable signals
+- communication preferences
+- pointers to deeper context files
+
+Keep the startup files lean. Put detailed repo maps, project histories, and reference material under `07_System/context-files/`, then load them only when relevant.
+
+## Extend the vault
+
+Add ongoing contexts under `05_Areas/` and document structural changes in `07_System/context-files/knowledge-system.md`.
+
+Your folder names can evolve. The workflows only need their referenced paths updated together.

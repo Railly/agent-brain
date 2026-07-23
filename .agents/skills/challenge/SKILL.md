@@ -3,10 +3,6 @@ name: challenge
 description: Argue against your own thinking on a topic using evidence from your vault
 ---
 
----
-description: Argue against your own thinking on a topic using evidence from your vault
----
-
 Read your current thinking on a topic and argue against it. Anti-sycophancy engine.
 
 Usage: `/challenge {topic or belief}`

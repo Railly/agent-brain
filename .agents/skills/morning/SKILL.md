@@ -3,10 +3,6 @@ name: morning
 description: Morning briefing - curated task list from multiple sources
 ---
 
----
-description: Morning briefing - curated task list from multiple sources
----
-
 Morning brain shouldn't decide priorities. Systems decide. This command curates everything into one focused view.
 
 ## WAVE 0: Gather Data (ALL PARALLEL)
@@ -26,8 +22,8 @@ Only run these if the tools are available:
 
 | # | Tool | When | Purpose |
 |---|------|------|---------|
-| 1 | Calendar MCP | If configured | Today's events |
-| 2 | Glob | `~/Programming/**/.git` (maxdepth 3) | Discover local repos for activity check |
+| 1 | Calendar integration | If configured | Today's events |
+| 2 | Filesystem search | `~/Programming/**/.git` (maxdepth 3) | Discover local repos for activity check |
 
 ## WAVE 2: Render (NO tool calls)
 

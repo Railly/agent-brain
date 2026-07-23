@@ -3,10 +3,6 @@ name: relink
 description: Scan notes and suggest missing backlinks between related topics
 ---
 
----
-description: Scan notes and suggest missing backlinks between related topics
----
-
 Find connections between notes in `03_Garden/`.
 
 ## Flow

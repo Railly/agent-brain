@@ -3,10 +3,6 @@ name: meeting
 description: Process meeting notes into structured notes + action items
 ---
 
----
-description: Process meeting notes into structured notes + action items
----
-
 Process meeting notes: $ARGUMENTS
 
 ## IMPORTANT: Be direct

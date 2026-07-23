@@ -1,163 +1,82 @@
-# Command Reference
+# Workflow reference
 
-All commands are slash commands (Claude Code) or skills (Codex). Run them from your vault directory.
+All workflows live in `.agents/skills/`. Claude Code can invoke them through skills or the original slash command aliases.
 
-## Daily Workflow
+## Daily
+
+### /morning
+
+Build a morning briefing from the weekly plan, unfinished tasks, calendar context when available, and current priorities.
 
 ### /today
-Daily log + end-of-day reflection in one command.
-- Auto-detects commits across repos
-- Carries over unfinished tasks from yesterday
-- Generates content ideas from your work
-- Task completion audit (planned vs actual)
-- MIT progress check from weekly goals
-- Day rating (1-7)
-```
-/today
-```
+
+Summarize completed work, carry unfinished tasks forward, reflect on the day, and prepare tomorrow.
 
 ### /log
-Quick timestamped entry to today's daily file.
-```
-/log "Learned about WebSocket connection pooling"
-/log "Had great meeting with Sarah about the API redesign"
+
+Append a timestamped thought, decision, or activity to today's journal.
+
+```text
+/log "Learned why the cache invalidation path was stale"
 ```
 
 ### /ship
-Commit, push, and log to daily file.
-```
-/ship              # commit + push
-/ship pr           # commit + push + create PR
-```
 
-### /morning
-Morning briefing: calendar, carry-over tasks, MITs, opportunities.
+Inspect the current Git changes, create and push a conventional commit, optionally open a PR, and append the result to the daily journal.
+
+```text
+/ship
+/ship pr
 ```
-/morning
-```
-*Requires: Calendar integration (optional)*
 
 ### /week
-Weekly planning with MITs and goal setting.
-```
-/week "Ship the API v2"
-```
 
-## Knowledge Management
+Create or update the weekly goal and most important tasks.
+
+## Knowledge
 
 ### /inbox
-Process Web Clipper captures into atomic notes + content ideas.
-```
-/inbox             # process all
-/inbox 3           # process 3 most recent
-/inbox --dry       # preview without changes
-```
 
-### /graduate
-Extract buried ideas from daily logs into permanent notes.
-```
-/graduate          # last 14 days
-/graduate 30       # last 30 days
-/graduate --auto   # auto-promote high-scoring candidates
-```
+Process Web Clipper captures into atomic notes and mark the source as processed.
 
 ### /relink
-Find and create missing connections between notes.
-```
-/relink            # scan all
-/relink rust       # focus on "rust" related notes
-/relink --orphans  # show disconnected notes
-```
+
+Find related notes that should reference each other and propose or create backlinks.
 
 ### /vault-search
-Search your vault semantically and by keyword.
-```
-/vault-search "authentication patterns"
-```
+
+Search the local vault and synthesize an answer from its notes without using the web.
 
 ### /meeting
-Process meeting notes into structured notes + action items.
-```
-/meeting           # then paste notes or provide recording
-```
 
-## Thinking & Analysis
-
-### /challenge
-Argue against your own beliefs using vault evidence. Anti-sycophancy engine.
-```
-/challenge "I should learn Rust"
-/challenge "Remote work is better" --quick
-```
-
-### /pulse
-Weekly Pareto analysis + goal alignment + drift detection.
-```
-/pulse             # full report
-/pulse --mit       # just 3 MITs
-/pulse --blind     # blind spots only
-/pulse --drift     # drift detection only
-```
-
-## Content Creation
-
-### /draft
-Create content drafts from your ideas (tweets, threads, blogs, videos).
-```
-/draft "Systems over willpower" --thread
-```
-
-### /de-ai
-Remove AI-generated jargon from text.
-```
-/de-ai path/to/file.md
-```
-
-## Learning System
-
-### /prime
-Pre-lesson briefing: scaffolding, prerequisites, intuition (3 min read).
-```
-/prime "fourier series"
-/prime "binary search" --area algorithms
-```
-
-### /learn
-Create study note with review questions and knowledge formulation guidance.
-```
-/learn "vector spaces"
-/learn "bayes theorem" --area probability
-```
-
-### /recall
-Morning retrieval practice quiz from your math/study notes.
-```
-/recall
-```
-
-### /study
-Log a study session to the daily tracker.
-```
-/study "linear algebra" 45min
-/study recall algorithms 15min
-```
-
-## Advanced
-
-### /overnight
-Build POCs overnight with parallel agents.
-```
-/overnight Build landing page: Hero, Features, Footer. Next.js, Tailwind.
-```
+Turn meeting notes or a transcript into a structured record with decisions and action items.
 
 ### /research
-Web research on a topic, saved to vault.
-```
-/research "WebSocket scaling patterns"
-```
 
-### /status
-Real-time snapshot of all your repos.
-```
-/status
-```
+Research a topic on the web, preserve sources, and save the result in the vault.
+
+## Thinking
+
+### /challenge
+
+Argue against a belief or decision using evidence from the vault and explicit counter-lenses.
+
+### /pulse
+
+Run a weekly review across goals, activity, recurring failures, drift, and neglected areas.
+
+## Content
+
+### /draft
+
+Turn a vault idea or cluster of notes into a content draft.
+
+### /de-ai
+
+Remove generic AI phrasing while preserving the author's meaning and voice.
+
+## Setup
+
+### /init
+
+Create a new personalized vault and install the runtime adapters. It does not migrate an existing vault.

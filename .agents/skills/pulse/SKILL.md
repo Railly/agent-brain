@@ -3,10 +3,6 @@ name: pulse
 description: Weekly goal alignment + Pareto analysis + drift detection
 ---
 
----
-description: Weekly goal alignment + Pareto analysis + drift detection
----
-
 Analyze engagement, apply 80/20 rule, detect drift and blind spots.
 
 ## Philosophy

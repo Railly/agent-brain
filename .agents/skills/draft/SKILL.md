@@ -3,10 +3,6 @@ name: draft
 description: Create content draft from ideas using the Shipping Bible
 ---
 
----
-description: Create content draft from ideas using the Shipping Bible
----
-
 Create content draft: $ARGUMENTS
 
 ## Philosophy
@@ -152,7 +148,7 @@ Next step: Write hook, then teaser post
 **Hook formulas**:
 - "I just built X in Y time. Here's how:"
 - "Most people think X. Actually, Y."
-- "The secret to X isn't Y—it's Z."
+- "The secret to X isn't Y. It's Z."
 - "I shipped this while tired. Here's what I learned:"
 
 ## Notify (Optional)

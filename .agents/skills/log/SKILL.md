@@ -3,10 +3,6 @@ name: log
 description: Log activity to today's daily file
 ---
 
----
-description: Log activity to today's daily file
----
-
 Quick log to daily file: $ARGUMENTS
 
 1. Get today's log path: `02_Journal/daily/$(date +%Y-%m-%d).md`

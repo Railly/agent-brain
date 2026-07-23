@@ -3,10 +3,6 @@ name: inbox
 description: Process unprocessed clips from Web Clipper into atomic notes
 ---
 
----
-description: Process unprocessed clips from Web Clipper into atomic notes
----
-
 Process pending clips from `01_Inbox/`.
 
 ## IMPORTANT: Be direct

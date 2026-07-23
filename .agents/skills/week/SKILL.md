@@ -3,10 +3,6 @@ name: week
 description: Set weekly goal and MITs for the week
 ---
 
----
-description: Set weekly goal and MITs for the week
----
-
 Create/open weekly plan: $ARGUMENTS
 
 ## IMPORTANT: Be direct
