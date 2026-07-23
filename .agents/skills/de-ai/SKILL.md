@@ -3,10 +3,6 @@ name: de-ai
 description: Remove AI-generated jargon and restore human voice to text
 ---
 
----
-description: Remove AI-generated jargon and restore human voice to text
----
-
 De-AI-ify text: $ARGUMENTS
 
 ## IMPORTANT: Be direct
@@ -64,7 +60,7 @@ De-AI-ify text: $ARGUMENTS
 ## Example
 
 **Before (AI):**
-"In today's rapidly evolving digital landscape, it's crucial to understand that leveraging AI effectively isn't just about utilizing cutting-edge technology—it's about harnessing its transformative potential."
+"In today's rapidly evolving digital landscape, it's crucial to understand that leveraging AI effectively isn't just about utilizing cutting-edge technology. It's about harnessing its transformative potential."
 
 **After (Human):**
 "AI works best when you use it for specific tasks. Focus on what it does well: writing code, analyzing data, answering questions."

@@ -3,7 +3,7 @@ type: home
 ---
 # My Brain
 
-> Personal OS powered by Obsidian + AI coding agents
+> Local-first personal OS powered by Obsidian and AI coding agents
 
 ## Vault Stats
 
@@ -34,4 +34,4 @@ claude          # open your AI agent in this vault
 
 ## How It Gets Better
 
-Every `/ship` logs a data point. Every `/inbox` creates a note. Every `/pulse` checks your anti-patterns. The system compounds. Use it daily and the AI knows you better every week.
+Every `/ship` logs a data point. Every `/inbox` creates a note. Every `/pulse` checks your anti-patterns. The system compounds when its evidence stays current.

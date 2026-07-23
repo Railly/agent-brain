@@ -3,10 +3,6 @@ name: today
 description: Log daily accomplishments, reflect on the day, and prep tomorrow
 ---
 
----
-description: Log daily accomplishments, reflect on the day, and prep tomorrow
----
-
 End-of-day summary: auto-detect commits across repos, merge with manual entries, generate daily log, reflect.
 
 ## WAVE 0: Gather Data (ALL PARALLEL, one message)

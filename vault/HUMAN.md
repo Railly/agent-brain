@@ -36,7 +36,7 @@ cd ~/brain && claude    # open your AI agent in the vault
 
 ## Key Concepts
 
-**Commands** live in `.claude/commands/`. Each is a markdown file with a multi-step workflow that your AI agent executes.
+**Workflows** live in `.agents/skills/`. Claude Code loads them through `.claude/skills/` and keeps the original slash commands through `.claude/commands/`.
 
 **Context files** live in `07_System/context-files/`. They provide deep per-project context, loaded on demand with `@` references in CLAUDE.md.
 
@@ -60,5 +60,5 @@ cd ~/brain && claude    # open your AI agent in the vault
 
 - Run `/init` to set up a new vault with personalized CLAUDE.md
 - Install Obsidian Web Clipper to feed the inbox
-- Every correction you give your AI agent gets saved to memory automatically
+- Save important corrections in `CLAUDE.md`, `AGENTS.md`, or a context file so future sessions can use them
 - The more you use `/ship`, the more accurate `/pulse` becomes

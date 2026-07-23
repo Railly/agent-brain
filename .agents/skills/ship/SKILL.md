@@ -3,10 +3,6 @@ name: ship
 description: Commit, push, and optionally create PR
 ---
 
----
-description: Commit, push, and optionally create PR
----
-
 Ship current changes: $ARGUMENTS
 
 1. Run `git status` to see changes

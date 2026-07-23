@@ -1,75 +1,80 @@
-# Setup Guide
+# Setup
 
 ## Prerequisites
 
-1. **Obsidian** (free), [obsidian.md](https://obsidian.md)
-2. **Claude Code** ($20/mo), [claude.ai/claude-code](https://claude.ai/claude-code)
-3. **Git**, for version control of your vault
+1. [Obsidian](https://obsidian.md) for browsing and editing the vault
+2. Claude Code, Codex, or another agent that reads Markdown instructions
+3. Git for local history and synchronization
+4. Bun for the template integrity check
 
-## Quick Start
+## Guided setup
+
+Clone the latest release:
 
 ```bash
-git clone https://github.com/Railly/agent-brain.git
+git clone --branch v2.0.0 https://github.com/Railly/agent-brain.git
 cd agent-brain
+claude
 ```
 
-### Option A: Interactive Setup (Recommended)
+Run:
+
+```text
+/init
+```
+
+The workflow asks for your identity, stack, goals, one recurring failure, and the destination for your vault. It then:
+
+1. Creates the seven-folder structure.
+2. Installs canonical skills and Claude Code adapters.
+3. Generates personalized `CLAUDE.md` and `AGENTS.md`.
+4. Discovers local Git repositories.
+5. Creates the first daily log.
+
+`/init` stops when the destination already looks like an existing vault. Use the [v2 migration guide](MIGRATION-v2.md) instead of overwriting it.
+
+## Manual setup
+
+Copy the vault template:
+
 ```bash
-bun run setup.sh
+cp -R vault ~/my-brain
 ```
 
-This will:
-1. Ask for your name, role, and goals
-2. Copy the vault template to your chosen location
-3. Generate a personalized CLAUDE.md
-4. Set up commands
+Copy canonical skills and adapters:
 
-### Option B: Manual Setup
-
-1. Copy the `vault/` directory to your preferred location:
 ```bash
-cp -r vault/ ~/my-brain/
+cp -R .agents ~/my-brain/.agents
+cp -R .claude ~/my-brain/.claude
 ```
 
-2. Copy `.claude/commands/` into your vault:
-```bash
-cp -r .claude/ ~/my-brain/.claude/
-```
+Copy and personalize the context templates:
 
-3. Copy and customize `CLAUDE.md`:
 ```bash
 cp CLAUDE.md ~/my-brain/CLAUDE.md
+cp AGENTS.md ~/my-brain/AGENTS.md
 ```
 
-4. Edit `CLAUDE.md` with your personal info (name, goals, anti-patterns)
+Open `~/my-brain` as an Obsidian vault, then start your agent from that directory.
 
-5. Open Obsidian → "Open folder as vault" → select your vault directory
+## Verify the release clone
 
-## Web Clipper Setup (Optional but Recommended)
+```bash
+bun run check
+```
 
-1. Install [Obsidian Web Clipper](https://obsidian.md/clipper) browser extension
-2. Configure:
-   - **Folder**: `01_Inbox/`
-   - **Note name**: `{{date}}-{{title|slugify}}`
-   - **Behavior**: Create new note
+This verifies the packaged template. Your personalized vault does not need to keep the checker.
 
-Now anything you clip lands in your inbox, ready for `/inbox` to process.
+## Web Clipper
 
-## Recommended Obsidian Plugins
+Configure the Obsidian Web Clipper to create notes in `01_Inbox/`. `/inbox` processes those captures into durable notes.
 
-- **Dataview**, Query your notes programmatically
-- **Calendar**, Visual daily note navigation
-- **Graph View** (built-in), See your knowledge graph
+## First loop
 
-## Verify Installation
+```text
+/log "Testing my second brain"
+/morning
+/today
+```
 
-1. Open terminal in your vault directory
-2. Run `claude`
-3. Try: `/log "Testing my second brain"`
-4. Check: `02_Journal/daily/` should have today's file with your entry
-
-## Next Steps
-
-- Read [COMMANDS.md](COMMANDS.md) for the full command reference
-- Read [PHILOSOPHY.md](PHILOSOPHY.md) to understand the system
-- Start with `/log` and `/inbox`, they're the gateway commands
+Then read [COMMANDS.md](COMMANDS.md) and customize only the workflows you actually use.

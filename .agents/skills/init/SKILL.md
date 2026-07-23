@@ -3,10 +3,6 @@ name: init
 description: Set up your personal OS from scratch with guided questions
 ---
 
----
-description: Set up your personal OS from scratch with guided questions
----
-
 Interactive setup wizard for your personal OS. Asks questions, builds your vault, generates your CLAUDE.md.
 
 ## WAVE 0: Welcome
@@ -20,9 +16,9 @@ I'll ask you a few questions to set everything up.
 This takes about 2 minutes.
 ```
 
-## WAVE 1: Questions (sequential, use AskUserQuestion for each)
+## WAVE 1: Questions
 
-Ask these one at a time. Wait for each answer before asking the next.
+Ask these directly, one at a time. Wait for each answer before asking the next.
 
 1. "What's your name and what do you do? (e.g. 'Sarah, frontend engineer at Stripe')"
 2. "What's your main stack? (e.g. 'TypeScript, React, Next.js, Tailwind, PostgreSQL')"
@@ -35,6 +31,8 @@ Store all answers for WAVE 2.
 ## WAVE 2: Create vault structure
 
 Use the path from question 5 (default `~/brain`).
+
+Before writing, check whether the destination already contains `CLAUDE.md`, `AGENTS.md`, or `01_Inbox/`. If it does, stop without changing it and direct the user to `docs/MIGRATION-v2.md`.
 
 ```bash
 mkdir -p "{path}/01_Inbox/processed"
@@ -53,22 +51,16 @@ mkdir -p "{path}/06_Content"
 mkdir -p "{path}/07_System/context-files"
 ```
 
-## WAVE 3: Copy commands
+## WAVE 3: Install workflows
 
-Copy all commands from this repo's `.claude/commands/` to `{path}/.claude/commands/`:
-
-```bash
-mkdir -p "{path}/.claude/commands"
-cp .claude/commands/*.md "{path}/.claude/commands/"
-```
-
-Do NOT copy `init.md` itself (it's only needed for setup).
-
-Also copy the Codex skills:
+Copy the canonical skills and Claude Code adapters:
 
 ```bash
-cp -r .agents/ "{path}/.agents/"
+cp -R .agents "{path}/.agents"
+cp -R .claude "{path}/.claude"
 ```
+
+Keep `/init` installed so the user can inspect the setup contract later. Do not run it against the initialized vault again.
 
 ## WAVE 4: Generate CLAUDE.md + AGENTS.md
 
@@ -119,11 +111,16 @@ Create `{path}/CLAUDE.md` using the answers from WAVE 1. Then copy it to `{path}
 /relink     # Find missing connections between notes
 /draft      # Create content from ideas
 /meeting    # Process meeting notes or recordings
-/research   # Deep research with Firecrawl
+/research   # Web research saved with sources
 /vault-search  # Search your vault
 /week       # Set weekly goals and MITs
 /de-ai      # Strip AI jargon from text
 ```
+
+## Runtime Surfaces
+- `.agents/skills/` is the canonical workflow source
+- `.claude/skills/` exposes the same workflows to Claude Code
+- `.claude/commands/` preserves slash command compatibility
 
 ## Communication
 - Be direct and concise
@@ -144,7 +141,7 @@ cp "{path}/CLAUDE.md" "{path}/AGENTS.md"
 Scan common directories for git repos and create `{path}/07_System/context-files/repos-map.md`:
 
 ```bash
-find ~/Programming ~/Projects ~/Code ~/Developer ~/repos ~/work ~/Clerk -maxdepth 2 -name ".git" -type d 2>/dev/null | sed 's/\/.git$//'
+find ~/Programming ~/Projects ~/Code ~/Developer ~/repos ~/work -maxdepth 2 -name ".git" -type d 2>/dev/null | sed 's/\/.git$//'
 ```
 
 Generate a repos-map.md with a table:
@@ -174,7 +171,7 @@ rating:
 - [x] Set up personal OS
 
 ## Ship Log
-- [{HH:MM}] *initialized*: personal OS created with {N} commands
+- [{HH:MM}] *initialized*: personal OS created with {N} workflows
 
 ## Tomorrow
 - Try /morning to see the full briefing
@@ -189,7 +186,7 @@ Print:
 Your personal OS is ready.
 
 Vault: {path}
-Commands: 14 installed
+Workflows: 15 installed
 CLAUDE.md: personalized
 Repos found: {N}
 First daily log: created

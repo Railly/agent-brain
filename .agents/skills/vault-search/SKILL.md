@@ -3,10 +3,6 @@ name: vault-search
 description: Research topic by searching vault and synthesizing findings
 ---
 
----
-description: Research topic by searching vault and synthesizing findings
----
-
 Research in vault: $ARGUMENTS
 
 ## IMPORTANT: Be direct

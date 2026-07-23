@@ -19,7 +19,6 @@ What if an AI maintained your knowledge system FOR you?
 
 That's what this project is. Your AI agent acts as your knowledge maintenance agent:
 - `/inbox` processes your web clips into atomic notes with connections
-- `/graduate` rescues buried ideas from daily logs
 - `/relink` finds missing connections between notes
 - `/pulse` tells you if your actions match your stated goals
 - `/challenge` argues against your own thinking using YOUR data
@@ -59,8 +58,6 @@ Web Clipper → 01_Inbox/
               /inbox
                  ↓
          03_Garden/concepts/  ←→  /relink
-                 ↓
-              /graduate (from daily logs)
                  ↓
          05_Areas/content-creation/ideas/
                  ↓

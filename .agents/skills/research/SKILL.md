@@ -3,17 +3,13 @@ name: research
 description: Research a topic and save findings to vault
 ---
 
----
-description: Research a topic and save findings to vault
----
-
 Topic: $ARGUMENTS
 
 ## Research Methods (choose based on need)
 
 ### Static Content (default)
-1. Use WebSearch to find relevant information
-2. Use WebFetch to read key sources
+1. Use the runtime's web search capability to find relevant information
+2. Use the runtime's page fetch capability to read key sources
 
 ### Dynamic/Interactive Content (use agent-browser)
 When pages require JavaScript, login, or interaction:
@@ -26,7 +22,7 @@ agent-browser close
 ```
 
 ## Process
-1. Search and gather sources (WebSearch + WebFetch or agent-browser)
+1. Search and gather sources with the runtime's web tools or agent-browser
 2. Synthesize findings into structured notes
 3. Save to `05_Areas/research/$ARGUMENTS.md` with:
    - Summary

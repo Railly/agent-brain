@@ -51,7 +51,7 @@
 
 Full reference: `07_System/context-files/knowledge-system.md`
 
-### Commands
+### Workflows
 | Command | Purpose |
 |---------|---------|
 | `/init` | Guided setup wizard for new users |
@@ -69,6 +69,11 @@ Full reference: `07_System/context-files/knowledge-system.md`
 | `/draft` | Create content drafts from ideas |
 | `/de-ai` | Remove AI-generated jargon from text |
 | `/research` | Web research saved to vault |
+
+### Runtime Surfaces
+- `.agents/skills/` is the canonical workflow source
+- `.claude/skills/` exposes the workflows to Claude Code
+- `.claude/commands/` preserves slash command compatibility
 
 ## Anti-Patterns (Recurring Failures)
 

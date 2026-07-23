@@ -3,36 +3,40 @@ type: system
 ---
 # Purpose
 
-## For AI Agents Reading This
+## For agents reading this
 
-This vault is a **personal OS**, a persistent knowledge system designed to give AI coding agents full context about the user across every session.
+This vault is a local-first personal operating system. It gives coding agents persistent, user-controlled context across sessions without depending on opaque model memory.
 
-## How It Works
+## What the vault stores
 
-The vault stores identity, goals, anti-patterns, project context, daily logs, and atomic notes. When an AI agent starts a session here, it reads CLAUDE.md (or AGENTS.md) and immediately knows:
-
-- Who the user is and what they do
-- Their stack preferences and tooling choices
-- Where every repo lives on their machine
-- Their active projects and current priorities
-- Their recurring failures and how to detect them
-
-This eliminates cold starts. Session 100 is more useful than session 1 because the system accumulates real context over time.
+- identity, goals, preferences, and recurring failures
+- repository and project context
+- daily and weekly activity
+- atomic notes and relationships
+- drafts, decisions, and evidence
 
 ## Architecture
 
-```
-CLAUDE.md / AGENTS.md    -> Agent reads on startup (identity, stack, goals, anti-patterns)
-07_System/context-files/ -> Deep per-project context, loaded on demand via @ references
-02_Journal/daily/        -> Auto-logged daily activity from /ship and /log
-03_Garden/concepts/      -> Permanent knowledge notes with backlinks
-.claude/commands/        -> 14 executable workflows
+```text
+CLAUDE.md / AGENTS.md       lean startup context and pointers
+07_System/context-files/    deeper context loaded when relevant
+.agents/skills/             canonical workflow contracts
+.claude/skills/             generated Claude Code skill adapters
+.claude/commands/           generated v1-compatible aliases
+02_Journal/                 durable activity and reflection
+03_Garden/                  durable knowledge
 ```
 
-## Design Decisions
+## Design decisions
 
-1. **Obsidian as persistence**: Markdown files, local-first, no vendor lock-in, graph view for connections
-2. **Commands as workflows**: Each `.claude/commands/*.md` is a multi-step recipe the AI executes
-3. **Context files over memory**: Explicit files the user controls, not opaque AI memory
-4. **Anti-patterns as data**: Formalized failures with signals and interventions, checked weekly by `/pulse`
-5. **Auto-logging over manual journaling**: `/ship` captures work automatically, reducing friction to zero
+1. Markdown is the persistence layer so the user owns and can inspect the system.
+2. `.agents/skills/` is the only workflow source of truth.
+3. Runtime adapters are generated and checked against the canonical skills.
+4. Startup context stays lean and points to deeper files.
+5. `/ship` and `/log` reduce journaling friction by recording real activity.
+6. `/pulse` checks stated goals and recurring failures against vault evidence.
+7. Migration changes system surfaces without replacing personal notes.
+
+## Quality boundary
+
+Template checks verify packaging integrity. Review gates can measure findings that escape review. Neither is a complete measure of software quality, production reliability, maintainability, or user outcomes.

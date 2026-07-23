@@ -1,0 +1,9 @@
+{
+  "name": "agent-brain",
+  "private": true,
+  "version": "2.0.0",
+  "scripts": {
+    "check": "bun scripts/check-template.ts",
+    "sync": "bun scripts/sync-adapters.ts"
+  }
+}

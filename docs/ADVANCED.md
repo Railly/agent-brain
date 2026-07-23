@@ -1,61 +1,39 @@
-# Advanced: Always-On Assistant
+# Advanced architecture
 
-This repo includes the core knowledge system. For power users who want an always-on AI assistant, here's what's possible.
+Agent Brain v2 is the persistence and workflow layer. It can support more automation, but the vault should remain the durable source of intent and evidence.
 
-## The Gateway Pattern
+## Replaceable workers
 
-Instead of only using AI agents in the terminal, you can set up a webhook server that:
-1. Receives messages from WhatsApp/Telegram/Slack
-2. Processes them with your AI agent (`claude -p` or `codex`)
-3. Replies through the same channel
+A coding model is a worker, not the owner of task state. If you add background agents, keep admission, retries, dependencies, risk, and completion state outside the model session.
 
-This turns your second brain into a conversational assistant you can message anytime.
-
-## Architecture
-
-```
-Message (WhatsApp/Telegram/Slack)
-    ↓
-Webhook Server (Bun + Hono)
-    ↓
-claude -p --model sonnet "Process this message using my vault"
-    ↓
-Reply via API
+```text
+vault -> task state -> isolated worker -> checks -> review -> durable artifact
 ```
 
-## Scheduled Tasks (Cron)
+The worker may change. The task contract and evidence should survive it.
 
-Set up recurring jobs:
-- **Morning pulse**: Daily MITs at 9am
-- **Weekly review**: Full `/pulse` report on Fridays
-- **Nightly reindex**: Update search index at 3am
-- **Memory extraction**: Consolidate learnings at 3:30am
+## Bounded automation
 
-## Proactive Nudges (Initiative Engine)
+Before scheduling a workflow, define:
 
-Rules that check your state and nudge you:
-- No study in 2 days → suggest `/recall`
-- 10+ unprocessed clips → suggest `/inbox`
-- No commits in 48h → "shipping drought?"
-- Late commits (after midnight) → "sleep > shipping"
+1. What inputs admit the task.
+2. Which files and systems it may change.
+3. Which actions require human approval.
+4. What evidence marks completion.
+5. How failure and partial progress are recorded.
 
-## Soul System
+Cron and messaging gateways are transport. They do not provide these guarantees by themselves.
 
-Give your assistant a persistent personality:
-- `IDENTITY.md`, Name, role, capabilities
-- `PREFERENCES.md`, Communication style
-- `USER.md`, Your context, goals, relationships
-- `RELATIONSHIPS.md`, People in your life
+## Retrieval
 
-The assistant loads these on every message, creating consistent personality across conversations.
+Keyword search is a reliable baseline. Semantic search can improve recall, but indexes become stale. Track freshness and preserve a keyword fallback.
 
-## Coming Soon
+## Review and quality
 
-A premium package with:
-- Full webhook server code
-- Launchd/systemd service configs
-- WhatsApp + Telegram + Slack integration
-- Soul system templates
-- Cron daemon with job management
+A review gate can track findings that escape each review round and turn recurring findings into deterministic checks. That measures review effectiveness.
 
-Star the repo to get notified when it's available.
+It does not fully measure software quality. Reliability, maintainability, recovery time, human review time, escaped production defects, and user outcomes need separate evidence.
+
+## Private control planes
+
+The public template does not include a queue daemon, provider scheduler, WhatsApp gateway, or autonomous promotion pipeline. Those systems can sit above this vault, but they should be released only when their state model, authority boundaries, and recovery behavior are stable.
